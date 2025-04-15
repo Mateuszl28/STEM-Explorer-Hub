@@ -331,4 +331,9 @@ input,
   body.dark-mode .typewriter {
     border-color: #ccc;
   }
-              
+  section p {
+    margin-bottom: 1em;
+    font-size: 1.05em;
+    line-height: 1.6;
+  }
+                

@@ -2,7 +2,7 @@ const questions = [
   {
     q: "📐 What is the area of a triangle with base 10 and height 5?",
     options: ["50", "25", "30", "15"],
-    correct: 0
+    correct: 1
   },
   {
     q: "🧬 What part of the cell contains genetic material?",
@@ -27,8 +27,9 @@ const badgeArea = document.getElementById('badgeArea');
 const downloadBtn = document.getElementById('downloadPDF');
 const chatDisplay = document.getElementById('chatDisplay');
 const helpBtn = document.getElementById('helpBtn');
+const chatForm = document.getElementById('chatForm');
+const userInput = document.getElementById('userInput');
 
-// Hint and explanation data
 const hints = [
   "Use the formula: (base * height) / 2",
   "Where is the DNA stored in a eukaryotic cell?",
@@ -41,14 +42,13 @@ const explanations = [
   "Jupiter has the most gravity due to its massive size."
 ];
 
-// Load a quiz question
 function loadQuestion() {
   const q = questions[current];
   questionEl.textContent = q.q;
   answersEl.innerHTML = '';
-  chatDisplay.innerHTML = ''; // reset chatbot
-  badgeArea.innerHTML = '';   // reset badge
-  downloadBtn.style.display = 'none'; // hide PDF button
+  chatDisplay.innerHTML = '';
+  badgeArea.innerHTML = '';
+  downloadBtn.style.display = 'none';
 
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
@@ -61,7 +61,6 @@ function loadQuestion() {
   nextBtn.classList.add('hidden');
 }
 
-// Check selected answer
 function checkAnswer(selected) {
   const correct = questions[current].correct;
   const buttons = document.querySelectorAll('.answer-btn');
@@ -78,13 +77,6 @@ function checkAnswer(selected) {
   nextBtn.classList.remove('hidden');
 }
 
-// Show hint when clicked
-helpBtn.addEventListener('click', () => {
-  const hint = hints[current];
-  chatDisplay.innerHTML = `<strong>Hint:</strong> ${hint}`;
-});
-
-// Next question logic
 nextBtn.addEventListener('click', () => {
   current++;
   if (current < questions.length) {
@@ -94,14 +86,17 @@ nextBtn.addEventListener('click', () => {
   }
 });
 
-// Final result + badge + PDF
+helpBtn.addEventListener('click', () => {
+  const hint = hints[current];
+  chatDisplay.innerHTML = `<strong>Hint:</strong> ${hint}`;
+});
+
 function showResults() {
   questionEl.textContent = "🎉 Quiz completed!";
   answersEl.innerHTML = '';
   nextBtn.style.display = 'none';
   scoreEl.textContent = `Final Score: ${score} / ${questions.length}`;
 
-  // Show badge
   const badge = document.createElement('div');
   badge.style.padding = "10px";
   badge.style.border = "2px solid gold";
@@ -113,11 +108,9 @@ function showResults() {
   badge.innerHTML = "🏅 <strong>STEM Explorer Badge:</strong> Quiz Completed!";
   badgeArea.appendChild(badge);
 
-  // Show download button
   downloadBtn.style.display = 'inline-block';
 }
 
-// PDF Certificate logic
 downloadBtn.addEventListener('click', () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -137,5 +130,26 @@ downloadBtn.addEventListener('click', () => {
   doc.save("STEM-Quiz-Certificate.pdf");
 });
 
-// Start quiz on load
-window.addEventListener('load', loadQuestion);
+function getBotResponse(message) {
+  const msg = message.toLowerCase();
+  if (msg.includes("mitochondria")) return "Mitochondria are the powerhouses of the cell.";
+  if (msg.includes("nucleus")) return "The nucleus stores DNA and controls the cell.";
+  if (msg.includes("triangle")) return "Area = (base × height) / 2.";
+  if (msg.includes("gravity")) return "Jupiter has the strongest gravity due to its mass.";
+  if (msg.includes("help")) return "Ask me about cells, physics, or geometry!";
+  return "I don't understand. Try asking about STEM topics!";
+}
+
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const userMsg = userInput.value.trim();
+  if (!userMsg) return;
+
+  chatDisplay.innerHTML += `<div><strong>You:</strong> ${userMsg}</div>`;
+  const botReply = getBotResponse(userMsg);
+  chatDisplay.innerHTML += `<div><strong>Bot:</strong> ${botReply}</div>`;
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+  userInput.value = "";
+});
+
+document.addEventListener("DOMContentLoaded", loadQuestion);

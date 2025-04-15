@@ -6,15 +6,12 @@
   <title>STEM Quiz • STEM Explorer</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 </head>
 <body>
   <header>
     <h1>🧠 STEM Quiz</h1>
     <nav>
       <a href="index.html" class="nav-link">← Back to Home</a>
-      <button id="downloadPDF" style="display: none; margin-top: 1em;">📄 Download Certificate (PDF)</button>
-
     </nav>
     <button id="toggleTheme" class="theme-toggle">🌓 Toggle Dark Mode</button>
   </header>
@@ -25,12 +22,17 @@
       <div id="quizAnswers"></div>
       <button id="nextQuestion" class="hidden">Next</button>
       <p id="quizScore"></p>
-      <section id="chatbotSection">
-        <h3>💬 Need Help?</h3>
-        <div id="chatDisplay" class="chatbox"></div>
-        <button id="helpBtn">💡 Show Hint</button>
-      </section>
-      
+      <div id="badgeArea"></div>
+      <button id="downloadPDF" style="display: none; margin-top: 1em;">📄 Download Certificate (PDF)</button>
+    </section>
+
+    <section id="chatbotSection">
+      <h3>🤖 STEM Helper Chatbot</h3>
+      <div id="chatDisplay" class="chatbox"></div>
+      <form id="chatForm">
+        <input type="text" id="userInput" placeholder="Ask a question..." required />
+        <button type="submit">Send</button>
+      </form>
     </section>
   </main>
 
@@ -39,8 +41,6 @@
   </footer>
 
   <script src="script-quiz.js"></script>
-
-  <!-- Dark mode logic -->
   <script>
     const themeBtn = document.getElementById('toggleTheme');
     const prefersDark = localStorage.getItem('theme') === 'dark';

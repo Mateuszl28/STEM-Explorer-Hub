@@ -6,11 +6,87 @@
   <title>STEM Explorer Hub</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<script>
+<body>
+  <header>
+    <h1>STEM Explorer Hub</h1>
+    <p id="typewriterText" class="typewriter"></p>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="math.html">📈 Math</a></li>
+        <li><a href="physics.html">🧪 Physics</a></li>
+        <li><a href="biology.html">🧬 Biology</a></li>
+        <li><a href="quiz.html">🧠 Quiz</a></li>
+        <li><a href="about.html">📚 About</a></li>
+      </ul>
+    </nav>
+    <button id="toggleTheme" class="theme-toggle">🌓 Toggle Dark Mode</button>
+  </header>
+
+  <main>
+    <!-- 🔍 Opis projektu -->
+    <section class="intro">
+      <h2>Welcome to the STEM Explorer Hub</h2>
+      <p>
+        STEM Explorer Hub is a fully interactive platform designed to help you learn and experience Science, Technology, Engineering and Math through real coding.
+        From plotting math functions, simulating gravity, to exploring cells — everything is hands-on, visual, and fun!
+      </p>
+    </section>
+
+    <!-- 🔗 Sekcje z kartami -->
+    <section class="cards-section">
+      <h2>🌟 Explore STEM by Coding</h2>
+      <div class="cards-container">
+        <a href="math.html" class="card">
+          <h3>📈 Math</h3>
+          <p>Plot functions, visualize equations, and explore graphing tools.</p>
+        </a>
+        <a href="physics.html" class="card">
+          <h3>🧪 Physics</h3>
+          <p>Simulate gravity, forces, and physical laws using canvas animations.</p>
+        </a>
+        <a href="biology.html" class="card">
+          <h3>🧬 Biology</h3>
+          <p>Explore the cell and its components with interactive graphics.</p>
+        </a>
+        <a href="quiz.html" class="card">
+          <h3>🧠 STEM Quiz</h3>
+          <p>Test your knowledge across science, math, and more!</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 💡 Dlaczego warto -->
+    <section class="why-stem">
+      <h2>💡 Why Learn STEM?</h2>
+      <ul>
+        <li>🔬 It teaches critical thinking and problem-solving.</li>
+        <li>🚀 STEM fields are the future — AI, robotics, space, and more!</li>
+        <li>💼 STEM skills are in high demand in the job market.</li>
+        <li>🎓 Coding helps you understand and build the world around you.</li>
+        <li>🌍 STEM empowers you to make a real difference.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- 🔻 Stopka -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 STEM Explorer Hub</p>
+      <p>
+        <a href="about.html">About</a> |
+        <a href="quiz.html">Quiz</a> |
+        <a href="https://github.com/" target="_blank">GitHub</a>
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Atom.svg/100px-Atom.svg.png" alt="STEM Logo" height="40" />
+    </div>
+  </footer>
+
+  <!-- Typewriter effect -->
+  <script>
     const text = "💡 Discover. Code. Learn. Welcome to STEM Explorer Hub.";
     const target = document.getElementById("typewriterText");
     let i = 0;
-  
     function type() {
       if (i < text.length) {
         target.textContent += text.charAt(i);
@@ -18,53 +94,21 @@
         setTimeout(type, 50);
       }
     }
-  
     window.addEventListener("load", () => {
-      setTimeout(type, 500); // Delay before typing starts
+      setTimeout(type, 500);
     });
   </script>
-  
-<body>
-  <header>
-    <h1>STEM Explorer Hub</h1>
-    <button id="toggleTheme" class="theme-toggle">🌓 Toggle Dark Mode</button>
-    <p id="typewriterText" class="typewriter"></p>
 
-
-    <p>Interactive learning in Math, Physics, and Biology through coding.</p>
-    <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">🏠 Home</a></li>
-          <li><a href="math.html">📈 Math</a></li>
-          <li><a href="physics.html">🧪 Physics</a></li>
-          <li><a href="biology.html">🧬 Biology</a></li>
-          <li><a href="quiz.html">🧠 Quiz</a></li>
-          <li><a href="about.html">📚 About</a></li>
-        </ul>
-      </nav>
-      
-  </header>
-  <main>
-    <section>
-      <h2>Welcome!</h2>
-      <p>Select a STEM field to begin exploring with code-based simulations and tools.</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 STEM Explorer Hub. All rights reserved.</p>
-  </footer>
-</body>
-<script>
+  <!-- Dark mode toggle -->
+  <script>
     const themeBtn = document.getElementById('toggleTheme');
     const prefersDark = localStorage.getItem('theme') === 'dark';
-  
     if (prefersDark) document.body.classList.add('dark-mode');
-  
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const isDark = document.body.classList.contains('dark-mode');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
   </script>
-  
+</body>
 </html>
