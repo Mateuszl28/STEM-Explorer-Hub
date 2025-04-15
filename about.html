@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About • STEM Explorer Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 About This Project</h1>
+    <nav>
+      <a href="index.html" class="nav-link">← Back to Home</a>
+    </nav>
+    <button id="toggleTheme" class="theme-toggle">🌓 Toggle Dark Mode</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is STEM Explorer Hub?</h2>
+      <p>
+        STEM Explorer Hub is an interactive educational website that helps users
+        learn Science, Technology, Engineering, and Math through hands-on coding tools,
+        simulations, and quizzes. Built using HTML, CSS, and JavaScript.
+      </p>
+    </section>
+
+    <section>
+      <h2>Meet the Creator</h2>
+      <p>
+        👨‍💻 Created by an aspiring developer passionate about making STEM education fun and accessible for everyone.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <form id="contactForm" onsubmit="return showThanks()">
+        <input type="text" placeholder="Your Name" required /><br />
+        <input type="email" placeholder="Your Email" required /><br />
+        <textarea placeholder="Your message" rows="5" required></textarea><br />
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="thanksMessage" style="display:none; margin-top:1em;">✅ Thank you! We'll get back to you soon.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 STEM Explorer Hub</p>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    const themeBtn = document.getElementById('toggleTheme');
+    const prefersDark = localStorage.getItem('theme') === 'dark';
+    if (prefersDark) document.body.classList.add('dark-mode');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Contact form dummy logic
+    function showThanks() {
+      document.getElementById('thanksMessage').style.display = 'block';
+      return false; // prevent real submit
+    }
+  </script>
+</body>
+</html>
+    

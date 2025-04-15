@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STEM Explorer Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<script>
+    const text = "💡 Discover. Code. Learn. Welcome to STEM Explorer Hub.";
+    const target = document.getElementById("typewriterText");
+    let i = 0;
+  
+    function type() {
+      if (i < text.length) {
+        target.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 50);
+      }
+    }
+  
+    window.addEventListener("load", () => {
+      setTimeout(type, 500); // Delay before typing starts
+    });
+  </script>
+  
+<body>
+  <header>
+    <h1>STEM Explorer Hub</h1>
+    <button id="toggleTheme" class="theme-toggle">🌓 Toggle Dark Mode</button>
+    <p id="typewriterText" class="typewriter"></p>
+
+
+    <p>Interactive learning in Math, Physics, and Biology through coding.</p>
+    <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="math.html">📈 Math</a></li>
+          <li><a href="physics.html">🧪 Physics</a></li>
+          <li><a href="biology.html">🧬 Biology</a></li>
+          <li><a href="quiz.html">🧠 Quiz</a></li>
+          <li><a href="about.html">📚 About</a></li>
+        </ul>
+      </nav>
+      
+  </header>
+  <main>
+    <section>
+      <h2>Welcome!</h2>
+      <p>Select a STEM field to begin exploring with code-based simulations and tools.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 STEM Explorer Hub. All rights reserved.</p>
+  </footer>
+</body>
+<script>
+    const themeBtn = document.getElementById('toggleTheme');
+    const prefersDark = localStorage.getItem('theme') === 'dark';
+  
+    if (prefersDark) document.body.classList.add('dark-mode');
+  
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+  
+</html>

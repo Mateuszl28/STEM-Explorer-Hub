@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STEM Quiz • STEM Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+  <header>
+    <h1>🧠 STEM Quiz</h1>
+    <nav>
+      <a href="index.html" class="nav-link">← Back to Home</a>
+      <button id="downloadPDF" style="display: none; margin-top: 1em;">📄 Download Certificate (PDF)</button>
+
+    </nav>
+    <button id="toggleTheme" class="theme-toggle">🌓 Toggle Dark Mode</button>
+  </header>
+
+  <main>
+    <section id="quizBox">
+      <h2 id="quizQuestion">Loading question...</h2>
+      <div id="quizAnswers"></div>
+      <button id="nextQuestion" class="hidden">Next</button>
+      <p id="quizScore"></p>
+      <section id="chatbotSection">
+        <h3>💬 Need Help?</h3>
+        <div id="chatDisplay" class="chatbox"></div>
+        <button id="helpBtn">💡 Show Hint</button>
+      </section>
+      
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 STEM Explorer Hub</p>
+  </footer>
+
+  <script src="script-quiz.js"></script>
+
+  <!-- Dark mode logic -->
+  <script>
+    const themeBtn = document.getElementById('toggleTheme');
+    const prefersDark = localStorage.getItem('theme') === 'dark';
+    if (prefersDark) document.body.classList.add('dark-mode');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

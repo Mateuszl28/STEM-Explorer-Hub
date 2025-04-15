@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biology • STEM Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧬 Biology Cell Explorer</h1>
+    <nav><a href="index.html" class="nav-link">← Back to Home</a></nav>
+  </header>
+  <main>
+    <section id="cellExplorer">
+      <p>Click on different parts of the cell to learn what they do!</p>
+      <div id="cellContainer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Animal_Cell_%28english%29.svg" id="cellImage" alt="Animal Cell" />
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 STEM Explorer Hub</p>
+  </footer>
+  <script src="script-biology.js"></script>
+</body>
+<script>
+    const themeBtn = document.getElementById('toggleTheme');
+    const prefersDark = localStorage.getItem('theme') === 'dark';
+  
+    if (prefersDark) document.body.classList.add('dark-mode');
+  
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+  
+</html>

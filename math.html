@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math • STEM Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📈 Math Graph Plotter</h1>
+    <nav><a href="index.html" class="nav-link">← Back to Home</a></nav>
+  </header>
+  <main>
+    <section>
+      <p>Enter a function of <code>x</code> (e.g. <code>x*x</code>, <code>Math.sin(x)</code>):</p>
+      <input type="text" id="functionInput" placeholder="Enter function" value="x*x" />
+      <button id="plotGraph">Plot Graph</button>
+      <canvas id="graphCanvas" width="400" height="400"></canvas>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 STEM Explorer Hub</p>
+  </footer>
+  <script src="script-math.js"></script>
+</body>
+<script>
+    const themeBtn = document.getElementById('toggleTheme');
+    const prefersDark = localStorage.getItem('theme') === 'dark';
+  
+    if (prefersDark) document.body.classList.add('dark-mode');
+  
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+  
+</html>

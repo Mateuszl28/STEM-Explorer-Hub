@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physics • STEM Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧪 Physics Simulation: Gravity</h1>
+    <nav><a href="index.html" class="nav-link">← Back to Home</a></nav>
+  </header>
+  <main>
+    <section>
+      <p>Click the button to drop the ball and see gravity in action.</p>
+      <canvas id="gravityCanvas" width="300" height="400"></canvas><br />
+      <button id="dropBall">Drop Ball</button>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 STEM Explorer Hub</p>
+  </footer>
+  <script src="script-physics.js"></script>
+</body>
+<script>
+    const themeBtn = document.getElementById('toggleTheme');
+    const prefersDark = localStorage.getItem('theme') === 'dark';
+  
+    if (prefersDark) document.body.classList.add('dark-mode');
+  
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+  
+</html>

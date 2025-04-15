@@ -1,0 +1,334 @@
+/* Reset & base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  header {
+    background-color: #004080;
+    color: white;
+    padding: 2em 1em;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  
+  header nav {
+    margin-top: 1em;
+  }
+  
+  .nav-link {
+    display: inline-block;
+    margin: 0 10px;
+    color: #ffffff;
+    background: #0066cc;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background: #0052a3;
+  }
+  
+  /* Main content */
+  main {
+    flex: 1;
+    padding: 2em;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  section {
+    margin-top: 2em;
+  }
+  
+  input[type="text"] {
+    padding: 0.5em;
+    width: 200px;
+    font-size: 1rem;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 0.5em 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Canvas */
+  canvas {
+    margin-top: 1em;
+    border: 2px solid #333;
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  /* Biology tooltip */
+  #cellContainer {
+    position: relative;
+    display: inline-block;
+    margin-top: 1em;
+  }
+  
+  #cellImage {
+    max-width: 100%;
+    width: 400px;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 5px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 8px;
+    display: none;
+    z-index: 10;
+    max-width: 200px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 0.9em;
+    margin-top: auto;
+  }
+/* === DARK MODE === */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  body.dark-mode header {
+    background-color: #111;
+  }
+  
+  body.dark-mode footer {
+    background-color: #111;
+  }
+  
+  body.dark-mode canvas,
+  body.dark-mode input,
+  body.dark-mode button {
+    background-color: #2c2c2c;
+    color: #fff;
+    border-color: #444;
+  }
+  
+  body.dark-mode .nav-link {
+    background-color: #333;
+  }
+  
+  .theme-toggle {
+    margin-top: 1em;
+    padding: 0.4em 0.8em;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+  
+  body.dark-mode .theme-toggle {
+    background-color: #444;
+    color: white;
+  }
+/* === Animations & Transitions === */
+button,
+input,
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+button:hover,
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+section,
+canvas,
+input,
+.answer-btn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* === Mobile & Tablet Responsiveness === */
+@media (max-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  
+    header h1 {
+      font-size: 1.5em;
+    }
+  
+    .nav-link {
+      display: block;
+      margin: 10px auto;
+      width: 80%;
+      text-align: center;
+    }
+  
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+  
+    input[type="text"] {
+      width: 90%;
+    }
+  
+    #cellImage {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header, main, footer {
+      padding: 1em;
+    }
+  
+    button, .theme-toggle {
+      font-size: 0.9em;
+      padding: 0.6em 1em;
+    }
+  }
+  form input,
+  form textarea {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
+/* === Responsive Navigation === */
+.main-nav {
+    margin-top: 1em;
+  }
+  
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0;
+  }
+  
+  .main-nav ul li {
+    margin: 0;
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+  
+  .main-nav a:hover {
+    background-color: #0052a3;
+  }
+  
+  body.dark-mode .main-nav a {
+    background-color: #333;
+  }
+  #chatbotSection {
+    margin-top: 2em;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .chatbox {
+    background-color: #eef;
+    padding: 1em;
+    border: 2px solid #99c;
+    border-radius: 8px;
+    min-height: 60px;
+    margin-bottom: 1em;
+  }
+  
+  body.dark-mode .chatbox {
+    background-color: #222;
+    color: #ccc;
+    border-color: #555;
+  }
+  .typewriter {
+    font-size: 1.2em;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards, blink 0.7s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent }
+  }
+  
+  body.dark-mode .typewriter {
+    border-color: #ccc;
+  }
+              
